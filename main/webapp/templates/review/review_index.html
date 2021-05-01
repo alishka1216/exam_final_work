@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{{ perms.project }}
+{{ perms.product }}
 {% block menu %}
-    {% if perms.webapp.add_tracker %}
-        <li><a href="{% url "tracker-add" %}">Создать задачу</a></li>
+    {% if perms.webapp.add_review %}
+        <li><a href="{% url "review-add" %}">Создать отзыв</a></li>
     {% endif %}
 {% endblock menu %}
 

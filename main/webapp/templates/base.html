@@ -12,13 +12,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="nav nav-pills">
       <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url "project-list" %}" >Список проектов</a>
+          <a class="nav-link active" aria-current="page" href="{% url "product-list" %}" >Список продуктов</a>
       </li>
     {% if perms.accounts.view_profile %}
        <li class="nav-item"><a class="nav-link " href="{% url "accounts:user-list" %}">Список пользователей</a></li>
     {% endif %}
-          {% if perms.webapp.add_project %}
-        <li class="nav-item"><a class="nav-link " href="{% url "project-add" %}">Создать проект</a></li>
+        {% if user.is_authenticated %}
+          {% if perms.webapp.add_product %}
+        <li class="nav-item"><a class="nav-link " href="{% url "product-add" %}">Создать продукт</a></li>
+    {% endif %}
     {% endif %}
     {% block  nav%}{% endblock %}
       {% if user.is_authenticated %}

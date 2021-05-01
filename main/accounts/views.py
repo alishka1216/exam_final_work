@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import DetailView, ListView, UpdateView
 from accounts.models import Profile
-from webapp.models import BaseModel, Tracker, Project
+from webapp.models import BaseModel, Review, Product
 from accounts.forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserChangePasswordForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth import update_session_auth_hash
@@ -21,7 +21,7 @@ def register_view(request, *args, **kwargs):
             user = form.save()
             login(request, user)
             form.save()
-            return redirect('project-list')
+            return redirect('product-list')
     context['form'] = form
     return render(request, 'registration/register.html', context=context)
 
@@ -34,12 +34,12 @@ class UserDetailView(DetailView):
     paginate_related_orphans = 0
 
     def get_context_data(self, **kwargs):
-        projects = self.get_object().projects.all()
-        paginator = Paginator(projects, self.paginate_related_by, orphans=self.paginate_related_orphans)
+        products = self.get_object().products.all()
+        paginator = Paginator(products, self.paginate_related_by, orphans=self.paginate_related_orphans)
         page_number = self.request.GET.get('page', 1)
         page = paginator.get_page(page_number)
         kwargs['page_obj'] = page
-        kwargs['projects'] = page.object_list
+        kwargs['products'] = page.object_list
         kwargs['is_paginated'] = page.has_other_pages()
         return super().get_context_data(**kwargs)
 
@@ -104,6 +104,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:user-detail', kwargs={'pk': self.object.pk})
+
 
 
 class UserChangePasswordView(LoginRequiredMixin, UpdateView):

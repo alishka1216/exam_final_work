@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Вы уверены, что хотите удалить продукт? {{ product.title }}</h2>
-    <form action="{% url 'product-delete' project.pk %}" method="POST">
+    <form action="{% url 'product-delete' product.pk %}" method="POST">
         {% csrf_token %}
         <input class="btn btn-primary" type="submit" value="да">
     </form>
-    <a href="{% url "product-view" project.pk %}"> <input class="btn btn-primary mt-2" type="submit" value="отмена"></a>
+    <a href="{% url "product-view" product.pk %}"> <input class="btn btn-primary mt-2" type="submit" value="отмена"></a>
 {% endblock content %}

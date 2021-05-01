@@ -6,6 +6,7 @@ from webapp.forms import ReviewForm, SearchForm, UserForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import  ListView, DetailView, CreateView, UpdateView, DeleteView
 
+
 class UserUpdateView(PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'users/index.html'
@@ -14,7 +15,7 @@ class UserUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.add_users'
 
     def get_success_url(self):
-        return reverse('project-view', kwargs={'pk': self.object.pk})
+        return reverse('product-view', kwargs={'pk': self.object.pk})
 
     def has_permission(self):
         return super().has_permission() and self.request.user in self.get_object().author.all()

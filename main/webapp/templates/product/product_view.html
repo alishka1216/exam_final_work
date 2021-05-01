@@ -1,43 +1,35 @@
 
 {% extends "base.html" %}
-    {{ perms.project }}
+    {{ perms.product }}
 {% block nav%}
-    {% if perms.webapp.add_tracker %}
+    {% if user.is_authenticated %}
         <li class="nav-item">
         <a class="nav-link" href="{% url 'review-add' product.id %}">Добавить отзыв</a><br>
         </li>
-        {% endif %}
-    {% if perms.webapp.change_project %}
+    {% endif %}
+    {% if perms.webapp.change_product %}
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'product-update' product.id %}">Изменить проект</a>
+        <a class="nav-link" href="{% url 'product-update' product.id %}">Изменить продукт</a>
         </li>
         {% endif %}
-    {% if perms.webapp.delete_project %}
+    {% if perms.webapp.delete_product %}
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'product-delete' product.id %}">Удалить проект</a>
+        <a class="nav-link" href="{% url 'product-delete' product.id %}">Удалить продукт</a>
         </li>
         {% endif %}
-{#    {% if user_add %}#}
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'user-add' product.id %}">Добавить пользователя</a>
-        </li>
-{#    {% endif %}#}
 {% endblock %}
 {%  block content %}
 
 
-    <h1>Проект № {{ product.id }}</h1>
+    <h1>продукт № {{ product.id }}</h1>
     <p>Название: {{ product.title }}</p>
     <p>Описание: {{ product.description }}</p>
+    <img class="avatar" src="{{ product.avatar.url }}" alt="{{ product.avatar.url }}"width="250" height="250" alt="user picture">
     {% for review in product.product_reviews.all %}
-       <p>Отзыв: <a href="{% url 'review-view' tracker.pk %}"> {{review.title}}</p></a>
+         <p>Отзыв: <a href="{% url 'review-view' review.pk %}">{{ user.username }}</a></p>
     {% empty %}
         <h2>Нет отзывов</h2>
     {% endfor %}
-    {% for author in project.author.all %}
-        <a href="{% url "accounts:user-detail" author.id %}"><p>Пользователь: {{author.username}}</p></a>
-        {% empty %}
-        <h2>Нет users</h2>
-        {% endfor %}
+
 
 {% endblock content %}

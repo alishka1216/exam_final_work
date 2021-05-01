@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'project-list'
+LOGIN_REDIRECT_URL = 'product-list'
 LOGOUT_REDIRECT_URL = 'accounts:login'
 
 LOGIN_URL = 'accounts:login'
@@ -140,4 +140,4 @@ MEDIA_URL= '/uploads/'
 
 
 #для сессии
-SESSION_ENGINE = 'webapp.session_engine'
+# SESSION_ENGINE = 'webapp.session_engine'

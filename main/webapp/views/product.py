@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 class ProductList(ListView):
     template_name = 'product/product_index.html'
     model = Product
-    context_object_name = 'projects'
+    context_object_name = 'products'
     ordering = ('title',)
     paginate_by = 5
 
@@ -41,7 +41,7 @@ class ProductUpdate(PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'product/product_update.html'
     form_class = ProductForm
-    context_object_name = 'project'
+    context_object_name = 'product'
     permission_required = 'webapp.change_product'
 
 

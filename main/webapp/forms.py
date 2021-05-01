@@ -6,13 +6,13 @@ from webapp.models import Category, Review, Product
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['description_review']
+        fields = ['description_review', 'rating']
 
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['title', 'description', 'category' ]
+        fields = ['title', 'description', 'category', 'avatar' ]
 
 
 class UserForm(forms.ModelForm):

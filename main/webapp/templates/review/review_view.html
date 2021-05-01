@@ -15,8 +15,8 @@
 {% endblock %}
 {%  block content %}
 
-    
+    <p>Имя: {{ user.username}}</p>
     <p>Описание: {{ review.description_review }}</p>
     <p>Рейтинг: {{ review.rating }}</p>
-    <p>время: {{ tracker.created_ad }}</p>
+    <p>Почта: {{ user.email }}</p>
 {% endblock content %}
