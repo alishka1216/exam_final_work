@@ -1,0 +1,52 @@
+[
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "выполнено"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "не выполнено"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "в процессе"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 1,
+  "fields": {
+    "created_ad": "2021-05-01T08:26:19.096Z",
+    "update_ad": "2021-05-01T08:26:19.097Z",
+    "rating": "2.00",
+    "product": 1,
+    "description_review": "лавызфавфы",
+    "date": "2021-05-01",
+    "date_end": "2021-05-01",
+    "boolen_field": false,
+    "author": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "created_ad": "2021-05-01T08:25:09.219Z",
+    "update_ad": "2021-05-01T08:25:09.219Z",
+    "title": "Мясо",
+    "description": "дадада",
+    "category": 2,
+    "avatar": "avatars/Снимок_экрана_от_2021-04-30_22-41-36.png"
+  }
+}
+]
