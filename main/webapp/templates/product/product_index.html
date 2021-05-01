@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{{ perms.product }}
+{{ perms.project }}
 {% block menu %}
     {% if perms.webapp.add_product %}
         <li><a href="{% url "product-add" %}">Создать продукт</a></li>

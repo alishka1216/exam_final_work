@@ -38,6 +38,51 @@
   }
 },
 {
+  "model": "webapp.review",
+  "pk": 2,
+  "fields": {
+    "created_ad": "2021-05-01T09:43:21.854Z",
+    "update_ad": "2021-05-01T09:43:21.854Z",
+    "rating": "0.00",
+    "product": 1,
+    "description_review": "fdsfdscxzc",
+    "date": null,
+    "date_end": null,
+    "boolen_field": false,
+    "author": []
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 3,
+  "fields": {
+    "created_ad": "2021-05-01T09:44:15.003Z",
+    "update_ad": "2021-05-01T09:45:44.113Z",
+    "rating": "23.00",
+    "product": 1,
+    "description_review": "dsad",
+    "date": null,
+    "date_end": null,
+    "boolen_field": false,
+    "author": []
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 4,
+  "fields": {
+    "created_ad": "2021-05-01T10:42:07.471Z",
+    "update_ad": "2021-05-01T10:42:07.471Z",
+    "rating": "2.00",
+    "product": 1,
+    "description_review": "kjfdsjfdasf",
+    "date": null,
+    "date_end": null,
+    "boolen_field": false,
+    "author": []
+  }
+},
+{
   "model": "webapp.product",
   "pk": 1,
   "fields": {

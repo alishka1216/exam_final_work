@@ -24,7 +24,12 @@
     <h1>продукт № {{ product.id }}</h1>
     <p>Название: {{ product.title }}</p>
     <p>Описание: {{ product.description }}</p>
+    <p>Категория: {{ product.category }}</p>
+    {% if product.avatar %}
     <img class="avatar" src="{{ product.avatar.url }}" alt="{{ product.avatar.url }}"width="250" height="250" alt="user picture">
+        {% else %}
+            <img class="avatar" src="/uploads/avatars/VKontakte-Rossiya-Anonimnost-6.jpg"  width="250" height="250" alt="user picture">
+        {% endif %}
     {% for review in product.product_reviews.all %}
          <p>Отзыв: <a href="{% url 'review-view' review.pk %}">{{ user.username }}</a></p>
     {% empty %}

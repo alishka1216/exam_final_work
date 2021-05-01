@@ -15,6 +15,9 @@
     <a class="nav-link" href="{% url 'accounts:user-update' %}">Изменить данные профиля</a>
     <a class="nav-link" href="{% url 'accounts:user-change-password' %}">Изменить пароль</a>
     {% endif %}
-    <h2 class="text-center clear">Отзывы автора:</h2>
-    {% include 'partial/product_list.html' %}
+    {% for review in product.product_reviews.all %}
+         <p>Отзыв: <a href="{% url 'review-view' review.pk %}">{{ user.username }}</a></p>
+    {% empty %}
+        <h2>Нет отзывов</h2>
+    {% endfor %}
 {% endblock %}
