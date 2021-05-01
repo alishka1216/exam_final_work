@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{{ perms.project }}
+{% block menu %}
+    {% if perms.webapp.add_tracker %}
+        <li><a href="{% url "tracker-add" %}">Создать задачу</a></li>
+    {% endif %}
+{% endblock menu %}
+
+{% block content %}
+    <h1>Отзывы</h1>
+    {% if not reviews %}
+        <h2>Нет отзывов</h2>
+    {% else %}
+        {% include 'partial/search_form.html' %}
+    {% endif %}
+    {% for review in reviews %}
+            <p>{{ review.rating }}: <a href="{% url "review-view" review.id%}">{{ review.description_review }}</a></p>
+        {% endfor %}
+    {% include 'partial/paginate.html' %}
+{% endblock content %}

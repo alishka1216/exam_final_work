@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "base.html" %}
+    {{ perms.project }}
+{% block nav%}
+    {% if perms.webapp.add_tracker %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'review-add' product.id %}">Добавить отзыв</a><br>
+        </li>
+        {% endif %}
+    {% if perms.webapp.change_project %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'product-update' product.id %}">Изменить проект</a>
+        </li>
+        {% endif %}
+    {% if perms.webapp.delete_project %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'product-delete' product.id %}">Удалить проект</a>
+        </li>
+        {% endif %}
+{#    {% if user_add %}#}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-add' product.id %}">Добавить пользователя</a>
+        </li>
+{#    {% endif %}#}
+{% endblock %}
+{%  block content %}
+
+
+    <h1>Проект № {{ product.id }}</h1>
+    <p>Название: {{ product.title }}</p>
+    <p>Описание: {{ product.description }}</p>
+    {% for review in product.product_reviews.all %}
+       <p>Отзыв: <a href="{% url 'review-view' tracker.pk %}"> {{review.title}}</p></a>
+    {% empty %}
+        <h2>Нет отзывов</h2>
+    {% endfor %}
+    {% for author in project.author.all %}
+        <a href="{% url "accounts:user-detail" author.id %}"><p>Пользователь: {{author.username}}</p></a>
+        {% empty %}
+        <h2>Нет users</h2>
+        {% endfor %}
+
+{% endblock content %}

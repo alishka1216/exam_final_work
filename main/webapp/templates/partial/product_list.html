@@ -1,0 +1,11 @@
+
+{% for product in products %}
+    <div class="box">
+        <h4>Проект: <a href="{% url "product-view" product.pk %}">{{ product.title }}</a></h4>
+    </div>
+{% empty %}
+    <h2 class="text-center">Нет продуктов</h2>
+{% endfor %}
+{% if is_paginated %}
+     {% include 'partial/paginate.html' %}
+{% endif %}

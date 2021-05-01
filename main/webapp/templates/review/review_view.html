@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "base.html" %}
+{{ perms.product }}
+{% block  nav%}
+    {% if perms.webapp.change_review %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'review-update' review.id %}">Изменить</a>
+        </li>
+    {% endif %}
+    {% if perms.webapp.delete_review %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'review-delete' review.id %}">удалить</a>
+        </li>
+    {% endif %}
+{% endblock %}
+{%  block content %}
+
+    
+    <p>Описание: {{ review.description_review }}</p>
+    <p>Рейтинг: {{ review.rating }}</p>
+    <p>время: {{ tracker.created_ad }}</p>
+{% endblock content %}

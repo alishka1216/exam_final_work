@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{{ perms.project }}
+{% block menu %}
+    {% if perms.webapp.add_product %}
+        <li><a href="{% url "product-add" %}">Создать продукт</a></li>
+    {% endif %}
+{% endblock menu %}
+
+{% block content %}
+ {% include 'partial/product_list.html' %}
+{% endblock content %}
